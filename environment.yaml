@@ -1,0 +1,18 @@
+name: mlops-digits
+dependencies:
+  - scikit-learn 
+  - matplotlib
+  - numpy
+  - pandas
+  - flask
+  - jupyter
+  - pip
+  - pip:
+    - Flask-Testing
+
+
+
+
+
+
+ 

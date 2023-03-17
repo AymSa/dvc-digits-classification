@@ -1,0 +1,4 @@
+author: AymSA
+project_name: handwritten_digits_classification
+project_version: v0.1
+model_type: scikit-learn_1.2.1
