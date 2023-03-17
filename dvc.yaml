@@ -1,0 +1,33 @@
+stages:
+  preprocess:
+    cmd: python ./src/preprocess_data.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
+    deps:
+    - ./src/preprocess_data.py
+    - data/mnist/mnist_test.csv
+    - data/mnist/mnist_train.csv
+    outs:
+    - data/mnist/mnist_test_processed.csv
+    - data/mnist/mnist_train_processed.csv
+  train:
+    cmd: python ./src/train.py ./data/mnist/mnist_train_processed.csv ./src/model.py
+    deps:
+    - ./data/mnist/mnist_train_processed.csv
+    - ./src/model.py
+    - ./src/train.py
+    outs:
+    - ./models/model.joblib
+  evaluate:
+    cmd: python ./src/evaluate.py ./data/mnist/mnist_test_processed.csv ./src/model.py
+      ./models/model.joblib
+    deps:
+    - ./data/mnist/mnist_test_processed.csv
+    - ./models/model.joblib
+    - ./src/evaluate.py
+    - ./src/metrics.py
+    - ./src/model.py
+    outs:
+    - ./results/precision_recall_curve.png
+    - ./results/roc_curve.png
+    metrics:
+    - ./results/metrics.json:
+        cache: false

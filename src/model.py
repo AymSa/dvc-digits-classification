@@ -11,7 +11,7 @@ def get_variables(data):  ## A mettre dans le fichier de preprocess
     return data.loc[:, 1:].values, data.loc[:, 0].values
 
 
-def train(data, num_estimators, isDataFrame=False):  # Model RFC
+def train(data, isDataFrame=False):  # Model RFC
     if not isDataFrame:
         data = pd.read_csv(data, header=None)
 
@@ -24,7 +24,7 @@ def train(data, num_estimators, isDataFrame=False):  # Model RFC
             (
                 "RFC",
                 RandomForestClassifier(
-                    n_estimators=num_estimators,
+                    n_estimators=100,
                     max_depth=10,
                     criterion="gini",
                 ),
