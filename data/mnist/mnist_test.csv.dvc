@@ -1,0 +1,4 @@
+outs:
+- md5: c807df8d6d804ab2647fc15c3d40f543
+  size: 18289443
+  path: mnist_test.csv
