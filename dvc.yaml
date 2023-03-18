@@ -1,8 +1,8 @@
 stages:
   preprocess:
-    cmd: python ./src/preprocess_data.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
+    cmd: python ./src/preprocess.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
     deps:
-    - ./src/preprocess_data.py
+    - ./src/preprocess.py
     - data/mnist/mnist_test.csv
     - data/mnist/mnist_train.csv
     outs:

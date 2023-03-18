@@ -3,8 +3,18 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_recall_curve, roc_curve
-from metrics import *
 import os
+
+import importlib.util
+
+def module_from_file(module_name, file_path): ## BAD DESIGN 
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+METRICS_PATH = 'src/metrics.py'
+metrics = module_from_file("metrics", METRICS_PATH)
 
 
 def get_variables(data):  ## A mettre dans le fichier de preprocess
@@ -38,15 +48,16 @@ def train(data, isDataFrame=False):  # Model RFC
 
 
 def evaluate(data, pipe, OUTPUT_PATH, isDataFrame=False):
+    
     os.makedirs(OUTPUT_PATH, exist_ok=True)
     if not isDataFrame:
         data = pd.read_csv(data, header=None)
 
     X_test, y_test = get_variables(data)
 
-    y_pred_test = pipe.predict(X_test)  ## Probleme ici wtf
+    y_pred_test = pipe.predict(X_test)
 
-    test_results = eval_metrics(y_test, y_pred_test)
+    test_results = metrics.eval_metrics(y_test, y_pred_test)
 
     y_scores = pipe.predict_proba(X_test)[:, 1]
 
@@ -73,7 +84,7 @@ def evaluate(data, pipe, OUTPUT_PATH, isDataFrame=False):
         },
     }
 
-    plot_roc(logs, OUTPUT_PATH, "RFC")  ## Brut code, mauvais design !
-    plot_prc(logs, OUTPUT_PATH)
+    metrics.plot_roc(logs, OUTPUT_PATH, "RFC")  ## Brut code, mauvais design !
+    metrics.plot_prc(logs, OUTPUT_PATH)
 
     return logs

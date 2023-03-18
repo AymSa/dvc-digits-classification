@@ -1,11 +1,11 @@
 schema: '2.0'
 stages:
   preprocess:
-    cmd: python ./src/preprocess_data.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
+    cmd: python ./src/preprocess.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
     deps:
-    - path: ./src/preprocess_data.py
-      md5: 8ae3ce8ff8e0aa95564221c643168cc3
-      size: 786
+    - path: ./src/preprocess.py
+      md5: 391b2f1ed5d469b75a57df6000d278d3
+      size: 1234
     - path: data/mnist/mnist_test.csv
       md5: c807df8d6d804ab2647fc15c3d40f543
       size: 18289443
@@ -26,15 +26,15 @@ stages:
       md5: 1d87bef794e227c6e866f509334f27b7
       size: 109630071
     - path: ./src/model.py
-      md5: c2005b4f607b6b7670c4edae69f93241
-      size: 2155
+      md5: c4f675e8ebe27be761d60ea31f8fe596
+      size: 2490
     - path: ./src/train.py
-      md5: 9b3ebf2e02f21707f72f070aa30b0044
-      size: 428
+      md5: 82ad2985dca65c09247d992857e5b3da
+      size: 446
     outs:
     - path: ./models/model.joblib
-      md5: f2a4c3c54dbddf86582f31f7168cd7b4
-      size: 5398587
+      md5: 37469407dc29b88eb93083d64253e88c
+      size: 5394843
   evaluate:
     cmd: python ./src/evaluate.py ./data/mnist/mnist_test_processed.csv ./src/model.py
       ./models/model.joblib
@@ -43,24 +43,24 @@ stages:
       md5: e5ccf33aa0a87d461b8cdf1bd762ff58
       size: 18298463
     - path: ./models/model.joblib
-      md5: f2a4c3c54dbddf86582f31f7168cd7b4
-      size: 5398587
+      md5: 37469407dc29b88eb93083d64253e88c
+      size: 5394843
     - path: ./src/evaluate.py
-      md5: 238b4b0fe2be0cb73814ac124d12b4ad
-      size: 545
+      md5: 0dff21a9cc9ddb7e160bdba9005dfa71
+      size: 684
     - path: ./src/metrics.py
       md5: 87ae7d5cfc436cc8f1934c68c85c28a4
       size: 1484
     - path: ./src/model.py
-      md5: c2005b4f607b6b7670c4edae69f93241
-      size: 2155
+      md5: c4f675e8ebe27be761d60ea31f8fe596
+      size: 2490
     outs:
     - path: ./results/metrics.json
-      md5: 88347203d1556323739b297fc601eccf
+      md5: 8cac88df924a4e88c7da5801179f00cb
       size: 109
     - path: ./results/precision_recall_curve.png
-      md5: 3f7f8adb9bad50897aa795fc254d49a8
-      size: 17443
+      md5: 5811e7a1ef97ee4ebb3e62d3589d8467
+      size: 17540
     - path: ./results/roc_curve.png
-      md5: 09521a74d9605f43d63cfb5d397799ca
-      size: 18383
+      md5: eeddd67587cdc11d6868796bbd353763
+      size: 18299

@@ -2,7 +2,7 @@
 import os
 import sys
 import joblib
-from utils import *
+from __init__ import module_from_file
 
 DATA_PATH = os.path.abspath(sys.argv[1])
 MODEL_PATH = sys.argv[2]
