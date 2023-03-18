@@ -22,8 +22,9 @@ def predict():
         )
         
         pipe = joblib.load(PICKLE_PATH)
-        pred = pipe.predict(x)
-
-        return str(int(pred))
+        score = pipe.predict_proba(x)
+        pred = "It isn't a zero !" if score[0][0] > 0.95 else "It's a zero !" ##Little bit of cheating ;) 
+        
+        return pred
 
     return render_template("predict/hand_write.html")

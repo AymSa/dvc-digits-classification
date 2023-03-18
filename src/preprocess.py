@@ -29,8 +29,9 @@ def preprocess_data_user(user_request):
     x = data.resize((28, 28))
     x = np.invert(x)
     x = x[:, :, 0]
-    x = x / 255.
-    x[x > 0.35] = 1.
+    # x = x / 255.
+    # x[x > 0.35] = 1.
+    cv2.imwrite('instance/process_img.jpg', x)
 
     return x.flatten().reshape(1,-1)
 
