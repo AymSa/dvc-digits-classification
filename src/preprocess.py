@@ -6,7 +6,7 @@ import base64
 from PIL import Image
 import io
 import numpy as np 
-import cv2 
+import matplotlib.pyplot as plt 
 
 def preprocess_data_csv(DATA_PATH):
     # Processing example : Multiclassification to binary classification 0 vs All
@@ -31,7 +31,8 @@ def preprocess_data_user(user_request):
     x = x[:, :, 0]
     # x = x / 255.
     # x[x > 0.35] = 1.
-    cv2.imwrite('instance/process_img.jpg', x)
+    
+    plt.imsave('instance/process_img.jpg', x, cmap = 'gray')
 
     return x.flatten().reshape(1,-1)
 

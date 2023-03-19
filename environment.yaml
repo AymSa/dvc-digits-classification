@@ -6,13 +6,9 @@ dependencies:
   - pandas
   - flask
   - jupyter
+  - gunicorn
   - pip
   - pip:
     - Flask-Testing
-
-
-
-
-
-
- 
+    - dvc
+    - dvc[s3]
