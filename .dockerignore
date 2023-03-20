@@ -6,3 +6,4 @@ data/
 notebooks/
 results/
 *.joblib
+evidently_service/ 

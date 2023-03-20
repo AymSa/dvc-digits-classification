@@ -22,3 +22,11 @@ dvc run -n evaluate -d ./src/evaluate.py -d ./data/mnist/mnist_test_processed.cs
   -o ./results/precision_recall_curve.png -o ./results/roc_curve.png \
   python ./src/evaluate.py ./data/mnist/mnist_test_processed.csv ./src/model.py ./models/model.joblib
   ```
+
+
+PHASE DE REENTRAINEMENT A CODER ! 
+
+EVIDENTLY AI 
+GRAFANA
+PROMETHEUS
+KUBERNETES

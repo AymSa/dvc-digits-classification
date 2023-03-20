@@ -4,8 +4,8 @@ stages:
     cmd: python ./src/preprocess.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
     deps:
     - path: ./src/preprocess.py
-      md5: 391b2f1ed5d469b75a57df6000d278d3
-      size: 1234
+      md5: 2eeba952a24d8b6450c693acf6c71635
+      size: 1325
     - path: data/mnist/mnist_test.csv
       md5: c807df8d6d804ab2647fc15c3d40f543
       size: 18289443
@@ -26,15 +26,15 @@ stages:
       md5: 1d87bef794e227c6e866f509334f27b7
       size: 109630071
     - path: ./src/model.py
-      md5: c4f675e8ebe27be761d60ea31f8fe596
-      size: 2490
+      md5: d0cd58c9f87b17abf972c90f1b978129
+      size: 2579
     - path: ./src/train.py
       md5: 82ad2985dca65c09247d992857e5b3da
       size: 446
     outs:
     - path: ./models/model.joblib
-      md5: 37469407dc29b88eb93083d64253e88c
-      size: 5394843
+      md5: 0ecf250cd41f48fdfa7337809fe41ddc
+      size: 5340699
   evaluate:
     cmd: python ./src/evaluate.py ./data/mnist/mnist_test_processed.csv ./src/model.py
       ./models/model.joblib
@@ -43,24 +43,27 @@ stages:
       md5: e5ccf33aa0a87d461b8cdf1bd762ff58
       size: 18298463
     - path: ./models/model.joblib
-      md5: 37469407dc29b88eb93083d64253e88c
-      size: 5394843
+      md5: 0ecf250cd41f48fdfa7337809fe41ddc
+      size: 5340699
     - path: ./src/evaluate.py
       md5: 0dff21a9cc9ddb7e160bdba9005dfa71
       size: 684
     - path: ./src/metrics.py
-      md5: 87ae7d5cfc436cc8f1934c68c85c28a4
-      size: 1484
+      md5: edbbb78e6fb1affe5675a3350f10e744
+      size: 1753
     - path: ./src/model.py
-      md5: c4f675e8ebe27be761d60ea31f8fe596
-      size: 2490
+      md5: d0cd58c9f87b17abf972c90f1b978129
+      size: 2579
     outs:
+    - path: ./results/confusion_matrix.png
+      md5: 3e6c4b1eaeac8d808a52143dedac60e3
+      size: 10175
     - path: ./results/metrics.json
-      md5: 8cac88df924a4e88c7da5801179f00cb
-      size: 109
+      md5: 12dd4c56e19e18b91f50207e7f849a00
+      size: 108
     - path: ./results/precision_recall_curve.png
-      md5: 5811e7a1ef97ee4ebb3e62d3589d8467
-      size: 17540
+      md5: 5178273469b1fab5515a2dd22fc4b65b
+      size: 17632
     - path: ./results/roc_curve.png
-      md5: eeddd67587cdc11d6868796bbd353763
-      size: 18299
+      md5: 0bb4abe31a044ec338aece57aa462649
+      size: 18376

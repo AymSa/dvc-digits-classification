@@ -28,6 +28,7 @@ stages:
     outs:
     - ./results/precision_recall_curve.png
     - ./results/roc_curve.png
+    - ./results/confusion_matrix.png
     metrics:
     - ./results/metrics.json:
         cache: false

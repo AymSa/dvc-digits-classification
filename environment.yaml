@@ -12,3 +12,4 @@ dependencies:
     - Flask-Testing
     - dvc
     - dvc[s3]
+    - pymongo 

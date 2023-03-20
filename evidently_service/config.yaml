@@ -1,0 +1,14 @@
+datasets: ## Pour le batch metrics ??? 
+  digits:
+    data_format:
+      header: false
+    monitors:
+      - data_drift
+    reference_file: ./datasets/user_mnist.csv ###Fake data - mnist_test_processed.csv 
+service:
+  calculation_period_sec: 2
+  min_reference_size: 30
+  moving_reference: false
+  datasets_path: datasets
+  use_reference: true
+  window_size: 5

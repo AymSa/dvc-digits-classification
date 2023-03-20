@@ -1,5 +1,12 @@
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    ConfusionMatrixDisplay,
+)
+
 
 def eval_metrics(y, y_pred):
     acc = accuracy_score(y, y_pred)
@@ -8,6 +15,7 @@ def eval_metrics(y, y_pred):
     f1 = f1_score(y, y_pred)
 
     return {"accuracy": acc, "recall": recall, "precision": precision, "f1": f1}
+
 
 def plot_roc(logs, OUTPUT_PATH, model_name):
     plt.plot(
@@ -43,5 +51,12 @@ def plot_prc(logs, OUTPUT_PATH):
     plt.legend(loc="center left")
     plt.ylim([0, 1])
     out_path = OUTPUT_PATH + "/precision_recall_curve.png"
+    plt.savefig(out_path, dpi=80)
+    plt.cla()
+
+
+def plot_cf(y, y_pred, labels, OUTPUT_PATH):
+    ConfusionMatrixDisplay.from_predictions(y, y_pred, labels=labels)
+    out_path = OUTPUT_PATH + "/confusion_matrix.png"
     plt.savefig(out_path, dpi=80)
     plt.cla()

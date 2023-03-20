@@ -35,7 +35,7 @@
 	   				url: "",
 	   				data: img,
 	   				success: function(data){
-	   					$('#result').text('Predicted Output: ' + data);
+	   					$('#result').text('Predicted Output: ' + data['pred'] + ' | Zero proba: ' + data['proba']);
 	   				}
 	   			});
 	   		});

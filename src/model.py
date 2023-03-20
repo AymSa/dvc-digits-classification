@@ -57,6 +57,7 @@ def evaluate(data, pipe, OUTPUT_PATH, isDataFrame=False):
 
     y_pred_test = pipe.predict(X_test)
 
+    labels = pipe.classes_
     test_results = metrics.eval_metrics(y_test, y_pred_test)
 
     y_scores = pipe.predict_proba(X_test)[:, 1]
@@ -86,5 +87,6 @@ def evaluate(data, pipe, OUTPUT_PATH, isDataFrame=False):
 
     metrics.plot_roc(logs, OUTPUT_PATH, "RFC")  ## Brut code, mauvais design !
     metrics.plot_prc(logs, OUTPUT_PATH)
+    metrics.plot_cf(y_test, y_pred_test, labels, OUTPUT_PATH)
 
     return logs
