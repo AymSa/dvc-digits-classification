@@ -11,8 +11,10 @@ sys.path.insert(1, MODEL_PATH)
 
 model = module_from_file("model", MODEL_PATH)
 
-if __name__ == "__main__":
-    pipe, logs_train = model.train(DATA_PATH)
+def run_train(train_path):
+    pipe, _ = model.train(train_path)
     # Save pipeline
-
     joblib.dump(pipe, "./models/model.joblib")  ##PICKLE_PATH
+
+if __name__ == "__main__":
+    run_train(DATA_PATH)

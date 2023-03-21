@@ -4,8 +4,8 @@ stages:
     cmd: python ./src/preprocess.py data/mnist/mnist_train.csv data/mnist/mnist_test.csv
     deps:
     - path: ./src/preprocess.py
-      md5: 2eeba952a24d8b6450c693acf6c71635
-      size: 1325
+      md5: 7219cc0e7b6363686aaf3f77a6f1bbcb
+      size: 1460
     - path: data/mnist/mnist_test.csv
       md5: c807df8d6d804ab2647fc15c3d40f543
       size: 18289443
@@ -26,15 +26,15 @@ stages:
       md5: 1d87bef794e227c6e866f509334f27b7
       size: 109630071
     - path: ./src/model.py
-      md5: d0cd58c9f87b17abf972c90f1b978129
-      size: 2579
+      md5: adfadb65832a13add8913454712ad308
+      size: 2614
     - path: ./src/train.py
-      md5: 82ad2985dca65c09247d992857e5b3da
-      size: 446
+      md5: 4d1c48d6bcd9a26dc803fc184c2c4f07
+      size: 489
     outs:
     - path: ./models/model.joblib
-      md5: 0ecf250cd41f48fdfa7337809fe41ddc
-      size: 5340699
+      md5: dd4244a3a10290882303dd1f34c27771
+      size: 5393119
   evaluate:
     cmd: python ./src/evaluate.py ./data/mnist/mnist_test_processed.csv ./src/model.py
       ./models/model.joblib
@@ -43,17 +43,17 @@ stages:
       md5: e5ccf33aa0a87d461b8cdf1bd762ff58
       size: 18298463
     - path: ./models/model.joblib
-      md5: 0ecf250cd41f48fdfa7337809fe41ddc
-      size: 5340699
+      md5: dd4244a3a10290882303dd1f34c27771
+      size: 5393119
     - path: ./src/evaluate.py
-      md5: 0dff21a9cc9ddb7e160bdba9005dfa71
-      size: 684
+      md5: 5dc4518d35aa44d31279b15cc7dfb062
+      size: 683
     - path: ./src/metrics.py
-      md5: edbbb78e6fb1affe5675a3350f10e744
-      size: 1753
+      md5: 136ee665042ecdf986bd4b7216324c7c
+      size: 1752
     - path: ./src/model.py
-      md5: d0cd58c9f87b17abf972c90f1b978129
-      size: 2579
+      md5: adfadb65832a13add8913454712ad308
+      size: 2614
     outs:
     - path: ./results/confusion_matrix.png
       md5: 3e6c4b1eaeac8d808a52143dedac60e3
@@ -62,8 +62,8 @@ stages:
       md5: 12dd4c56e19e18b91f50207e7f849a00
       size: 108
     - path: ./results/precision_recall_curve.png
-      md5: 5178273469b1fab5515a2dd22fc4b65b
-      size: 17632
+      md5: ec154de1bae8ba8aa1cf087359294237
+      size: 17472
     - path: ./results/roc_curve.png
-      md5: 0bb4abe31a044ec338aece57aa462649
-      size: 18376
+      md5: 899ae1584b6595aee195788d7b4b6a55
+      size: 18413

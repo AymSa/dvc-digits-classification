@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_recall_curve, roc_curve
 import os
-
+from prefect import flow 
 import importlib.util
 
 def module_from_file(module_name, file_path): ## BAD DESIGN 
@@ -16,11 +16,10 @@ def module_from_file(module_name, file_path): ## BAD DESIGN
 METRICS_PATH = 'src/metrics.py'
 metrics = module_from_file("metrics", METRICS_PATH)
 
-
 def get_variables(data):  ## A mettre dans le fichier de preprocess
     return data.loc[:, 1:].values, data.loc[:, 0].values
 
-
+@flow 
 def train(data, isDataFrame=False):  # Model RFC
     if not isDataFrame:
         data = pd.read_csv(data, header=None)
@@ -45,7 +44,6 @@ def train(data, isDataFrame=False):  # Model RFC
     logs = pipe.fit(X_train, y_train)
 
     return pipe, {"training_logs": logs}
-
 
 def evaluate(data, pipe, OUTPUT_PATH, isDataFrame=False):
     

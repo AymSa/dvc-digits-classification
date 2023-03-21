@@ -13,3 +13,4 @@ dependencies:
     - dvc
     - dvc[s3]
     - pymongo 
+    - prefect 

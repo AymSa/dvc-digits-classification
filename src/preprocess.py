@@ -6,8 +6,10 @@ import base64
 from PIL import Image
 import io
 import numpy as np 
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+from prefect import flow, task 
 
+@task 
 def preprocess_data_csv(DATA_PATH):
     # Processing example : Multiclassification to binary classification 0 vs All
     df = pd.read_csv(DATA_PATH, header=None)
@@ -36,13 +38,17 @@ def preprocess_data_user(user_request):
 
     return x.flatten().reshape(1,-1)
 
+@flow 
+def run_preprocess(path_train, path_test):
+    processed_data_path = preprocess_data_csv(path_train)
+    print("Saved to {}".format(processed_data_path))
+
+    processed_data_path = preprocess_data_csv(path_test)
+    print("Saved to {}".format(processed_data_path))
 
 if __name__ == "__main__":
     DATA_PATH_TRAIN = os.path.abspath(sys.argv[1])
     DATA_PATH_TEST = os.path.abspath(sys.argv[2])
     
-    processed_data_path = preprocess_data_csv(DATA_PATH_TRAIN)
-    print("Saved to {}".format(processed_data_path))
-
-    processed_data_path = preprocess_data_csv(DATA_PATH_TEST)
-    print("Saved to {}".format(processed_data_path))
+    run_preprocess(DATA_PATH_TRAIN, DATA_PATH_TEST)
+    

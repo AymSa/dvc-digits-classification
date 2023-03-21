@@ -7,7 +7,6 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay,
 )
 
-
 def eval_metrics(y, y_pred):
     acc = accuracy_score(y, y_pred)
     recall = recall_score(y, y_pred)

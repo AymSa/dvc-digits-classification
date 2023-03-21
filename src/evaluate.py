@@ -4,7 +4,6 @@ import sys
 import joblib
 import json
 
-
 def run_evaluation(data, model_ckpt, model):
     pipe = joblib.load(model_ckpt)
     logs_eval = model.evaluate(data, pipe, "./results")

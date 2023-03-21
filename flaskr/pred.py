@@ -48,7 +48,7 @@ def predict():
 
         result = {"pred": int(prediction), "proba": round(proba[1], 3)}
 
-        save_to_db(record, prediction)
+        # save_to_db(record, prediction)
         # send_to_evidently_service(record, prediction)
 
         return jsonify(result)
